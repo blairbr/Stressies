@@ -19,10 +19,26 @@ namespace Stressies.Controllers
             this.customerService = customerService;
         }
 
-        public async Task<IActionResult> AddCustomer(Customer customer) 
+
+        [HttpPost("/customer")]
+        public async Task<IActionResult> AddCustomer([FromBody]Customer customer) 
         {
-            await customerService.AddCustomer(customer);
-            return Ok(customer);
-        } 
+            try
+            {
+                await customerService.AddCustomer(customer);
+                return Ok(customer);
+            }
+            catch (Exception exception)
+            {
+                throw exception; //fix this later
+            }
+        }
+
+        public async Task<IActionResult> DeleteCustomer(Customer customer) 
+        {
+            await customerService.DeleteCustomer(customer);
+            return Ok();
+
+        }
     }
 }

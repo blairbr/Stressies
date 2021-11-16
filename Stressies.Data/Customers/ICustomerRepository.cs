@@ -6,5 +6,7 @@ namespace Stressies.Data.Customers
     public interface ICustomerRepository
     {
         Task AddCustomer(Customer customer);
+
+        Task DeleteCustomer(int customerId);
     }
 }

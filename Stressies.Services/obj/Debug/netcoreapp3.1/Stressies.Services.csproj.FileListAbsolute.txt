@@ -1,6 +1,3 @@
-C:\Users\Blair\source\repos\Stressies\Stressies.Services\obj\Debug\netcoreapp3.1\Stressies.Services.csprojAssemblyReference.cache
-C:\Users\Blair\source\repos\Stressies\Stressies.Services\obj\Debug\netcoreapp3.1\Stressies.Services.AssemblyInfoInputs.cache
-C:\Users\Blair\source\repos\Stressies\Stressies.Services\obj\Debug\netcoreapp3.1\Stressies.Services.AssemblyInfo.cs
 C:\Users\Blair\source\repos\Stressies\Stressies.Services\bin\Debug\netcoreapp3.1\Stressies.Services.deps.json
 C:\Users\Blair\source\repos\Stressies\Stressies.Services\bin\Debug\netcoreapp3.1\Stressies.Services.dll
 C:\Users\Blair\source\repos\Stressies\Stressies.Services\bin\Debug\netcoreapp3.1\Stressies.Services.pdb
@@ -8,6 +5,9 @@ C:\Users\Blair\source\repos\Stressies\Stressies.Services\bin\Debug\netcoreapp3.1
 C:\Users\Blair\source\repos\Stressies\Stressies.Services\bin\Debug\netcoreapp3.1\Stressies.Domain.dll
 C:\Users\Blair\source\repos\Stressies\Stressies.Services\bin\Debug\netcoreapp3.1\Stressies.Data.pdb
 C:\Users\Blair\source\repos\Stressies\Stressies.Services\bin\Debug\netcoreapp3.1\Stressies.Domain.pdb
+C:\Users\Blair\source\repos\Stressies\Stressies.Services\obj\Debug\netcoreapp3.1\Stressies.Services.csprojAssemblyReference.cache
+C:\Users\Blair\source\repos\Stressies\Stressies.Services\obj\Debug\netcoreapp3.1\Stressies.Services.AssemblyInfoInputs.cache
+C:\Users\Blair\source\repos\Stressies\Stressies.Services\obj\Debug\netcoreapp3.1\Stressies.Services.AssemblyInfo.cs
 C:\Users\Blair\source\repos\Stressies\Stressies.Services\obj\Debug\netcoreapp3.1\Stressies.Services.csproj.CopyComplete
 C:\Users\Blair\source\repos\Stressies\Stressies.Services\obj\Debug\netcoreapp3.1\Stressies.Services.dll
 C:\Users\Blair\source\repos\Stressies\Stressies.Services\obj\Debug\netcoreapp3.1\Stressies.Services.pdb

@@ -1,10 +1,11 @@
 ﻿using Stressies.Data.Customers;
 using Stressies.Domain;
 using System;
+using System.Threading.Tasks;
 
 namespace Stressies.Services
 {
-    public class CustomerService
+    public class CustomerService : ICustomerService
     {
         private ICustomerRepository _customerRepository;
 
@@ -12,12 +13,17 @@ namespace Stressies.Services
         {
             _customerRepository = customerRepository;
         }
-        public async System.Threading.Tasks.Task<Customer> AddCustomer(Customer customer)
+        public async Task<Customer> AddCustomer(Customer customer)
         {
             await _customerRepository.AddCustomer(customer);
             //need to change this later to map to a data entity
 
             return customer;
+        }
+
+        public async Task DeleteCustomer(Customer customer)
+        {
+            await _customerRepository.DeleteCustomer(customer.CustomerID);
         }
     }
 }
