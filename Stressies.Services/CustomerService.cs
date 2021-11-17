@@ -21,9 +21,9 @@ namespace Stressies.Services
             return customer;
         }
 
-        public async Task DeleteCustomer(Customer customer)
+        public async Task DeleteCustomer(int id)
         {
-            await _customerRepository.DeleteCustomer(customer.CustomerID);
+            await _customerRepository.DeleteCustomer(id);
         }
     }
 }

@@ -9,6 +9,6 @@ namespace Stressies.Services
     public interface ICustomerService
     {
         Task<Customer> AddCustomer(Customer customer);
-        Task DeleteCustomer(Customer customer);
+        Task DeleteCustomer(int id);
     }
 }

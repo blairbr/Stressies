@@ -5,3 +5,4 @@ C:\Users\Blair\source\repos\Stressies\Stressies.Domain\obj\Debug\netcoreapp3.1\S
 C:\Users\Blair\source\repos\Stressies\Stressies.Domain\obj\Debug\netcoreapp3.1\Stressies.Domain.AssemblyInfo.cs
 C:\Users\Blair\source\repos\Stressies\Stressies.Domain\obj\Debug\netcoreapp3.1\Stressies.Domain.dll
 C:\Users\Blair\source\repos\Stressies\Stressies.Domain\obj\Debug\netcoreapp3.1\Stressies.Domain.pdb
+C:\Users\Blair\source\repos\Stressies\Stressies.Domain\obj\Debug\netcoreapp3.1\Stressies.Domain.csprojAssemblyReference.cache

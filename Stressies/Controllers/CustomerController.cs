@@ -9,9 +9,9 @@ using Stressies.Services;
 
 namespace Stressies.Controllers
 {
-    public class CustomerController : Controller
+    public class CustomerController : ControllerBase
     {
-        //CRUD
+        //Cx R U D
         private ICustomerService customerService;
 
         public CustomerController(ICustomerService customerService)
@@ -34,11 +34,21 @@ namespace Stressies.Controllers
             }
         }
 
-        public async Task<IActionResult> DeleteCustomer(Customer customer) 
+        [HttpDelete("/customer/{id}")]
+        //convert to int? or is it a string?
+        public async Task<IActionResult> DeleteCustomer([FromRoute]int id) 
         {
-            await customerService.DeleteCustomer(customer);
-            return Ok();
-
+            try
+            {
+                await customerService.DeleteCustomer(id);
+                return Ok();
+            }
+            catch (Exception exception)
+            {
+                throw exception; //redo this
+            }
         }
+
+
     }
 }
