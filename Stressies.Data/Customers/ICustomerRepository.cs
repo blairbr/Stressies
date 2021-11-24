@@ -8,5 +8,6 @@ namespace Stressies.Data.Customers
         Task AddCustomer(Customer customer);
 
         Task DeleteCustomer(int customerId);
+        Task<Customer> GetCustomerById(string id);
     }
 }

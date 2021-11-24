@@ -11,12 +11,28 @@ namespace Stressies.Controllers
 {
     public class CustomerController : ControllerBase
     {
-        //Cx R U D
+        //Cx R U Dx
+
+    //does the file as a whole take a route attribute? []
         private ICustomerService customerService;
 
         public CustomerController(ICustomerService customerService)
         {
             this.customerService = customerService;
+        }
+
+        [HttpGet("/customer/{id}")]
+        public async Task<Customer> GetCustomerById(string id) 
+        {
+            try
+            {
+                var result = await customerService.GetCustomerById(id);
+                return result;
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
         }
 
 

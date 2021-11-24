@@ -10,5 +10,6 @@ namespace Stressies.Services
     {
         Task<Customer> AddCustomer(Customer customer);
         Task DeleteCustomer(int id);
+        Task<Customer> GetCustomerById(string id);
     }
 }
