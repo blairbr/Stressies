@@ -65,6 +65,22 @@ namespace Stressies.Controllers
             }
         }
 
+        [HttpPut("/customer/{id}")]
+        //async method that returns a task of a customer and calls into service class
+
+        public async Task<IActionResult> UpdateCustomer(Customer customer) 
+        {
+            try
+            {
+                var result = await customerService.UpdateCustomer(customer);
+                return Ok();
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+        }
+         
 
     }
 }

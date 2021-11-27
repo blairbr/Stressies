@@ -31,5 +31,11 @@ namespace Stressies.Services
 
             return customer;
         }
+
+        public async Task<Customer> UpdateCustomer(Customer customer) 
+        {
+           var result =  await _customerRepository.UpdateCustomer(customer);
+            return result;
+        }
     }
 }
