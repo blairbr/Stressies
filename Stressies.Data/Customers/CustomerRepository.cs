@@ -53,7 +53,7 @@ namespace Stressies.Data.Customers
         {
             using (SqlConnection sqlconnection = new SqlConnection(connectionString))
             {
-                await sqlconnection.ExecuteAsync(updateStatement, new { customerId = customer.CustomerID });
+                await sqlconnection.ExecuteAsync(updateStatement, customer);
                 return customer;
                 //dont want to return what was sent in nomas... how do i return what was updated
 

@@ -34,6 +34,7 @@ namespace Stressies.Services
 
         public async Task<Customer> UpdateCustomer(Customer customer) 
         {
+            //add error handling
            var result =  await _customerRepository.UpdateCustomer(customer);
             return result;
         }

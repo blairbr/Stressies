@@ -65,10 +65,10 @@ namespace Stressies.Controllers
             }
         }
 
-        [HttpPut("/customer/{id}")]
+        [HttpPut("/customer")]
         //async method that returns a task of a customer and calls into service class
 
-        public async Task<IActionResult> UpdateCustomer(Customer customer) 
+        public async Task<IActionResult> UpdateCustomer([FromBody]Customer customer) 
         {
             try
             {
