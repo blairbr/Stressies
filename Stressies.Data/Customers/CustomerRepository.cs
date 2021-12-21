@@ -10,15 +10,16 @@ namespace Stressies.Data.Customers
     public class CustomerRepository : ICustomerRepository
     {
         private string connectionString = "Data Source = (LocalDb)\\MSSQLLocalDB; Initial Catalog = Stressies; Integrated Security = True;";
-        private string insertStatement = "INSERT INTO Customers (FirstName, LastName, Email, StreetAddress, StreetAddress2, City, State, Zip) VALUES (@FirstName, @LastName, @Email, @StreetAddress, @StreetAddress2, @City, @State, @Zip)";
+        private string insertStatement = "INSERT INTO Customers (FirstName, LastName, Email, Password, StreetAddress, StreetAddress2, City, State, Zip) VALUES (@FirstName, @LastName, @Email, @Password, @StreetAddress, @StreetAddress2, @City, @State, @Zip)";
         private string deleteStatement = "DELETE FROM Customers WHERE [CustomerID] = @CustomerID";
         private string getByIdStatement = "SELECT * FROM Customers WHERE CustomerID = @CustomerID";
         private string updateStatement = @"
                 UPDATE Customers SET FirstName = @FirstName, 
                                      LastName = @LastName, 
                                      Email = @Email, 
+                                     Password = @Password,
                                      StreetAddress = @StreetAddress, 
-                                     StreetAddress2 = @StreetAddress2, 
+                                     StreetAddress2 = @StreetAddress2,           
                                      City = @City, 
                                      State = @State, 
                                      Zip = @Zip 

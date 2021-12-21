@@ -11,7 +11,6 @@ namespace Stressies.Controllers
 {
     public class CustomerController : ControllerBase
     {
-        //Cx R U Dx
 
     //does the file as a whole take a route attribute? []
         private ICustomerService customerService;
