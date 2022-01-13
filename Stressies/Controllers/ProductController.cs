@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using Dapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Stressies.Data;
@@ -14,40 +15,40 @@ namespace Stressies.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        public ProductController(ProductRepository productRepository)
+        private IProductRepository productRepository;
+        public ProductController(ProductRepository _productRepository)
         {
-    
+            productRepository = _productRepository;
         }
 
-        public async Task<Customer> AddCustomer(Customer customer)
+        public async Task<Product> AddProduct(Product product)
         {
-            using (var connection = new SqlConnection(connectionString))
-                //call the stored proc
-                await connection.ExecuteAsync(insertStatement, customer);
-            return customer;
+            var response = await productRepository.AddProduct(product);
+            return response;
         }
 
-        public async Task<Customer> AddCustomer(Customer customer)
-        {
-            using (var connection = new SqlConnection(connectionString))
-                //call the stored proc
-                await connection.ExecuteAsync(insertStatement, customer);
-            return customer;
-        }
+        //public async Task<Customer> AddCustomer(Customer customer)
+        //{
+        //    using (var connection = new SqlConnection(connectionString))
+        //        //call the stored proc
+        //        await connection.ExecuteAsync(insertStatement, customer);
+        //    return customer;
+        //}
 
-        [HttpPost]
-        [Route("/product")]
-        public Task<Product> AddProductAsync(Product product) { 
-            using (var connection = new SqlConnection(connectionString))
-        }
+        //[HttpPost]
+        //[Route("/product")]
+        //public Task<Product> AddProductAsync(Product product) { 
+        //    using (var connection = new SqlConnection(connectionString))
+        //}
 
-        [HttpGet]
-
-
-        [HttpPut]
+        //[HttpGet]
 
 
-        [HttpDelete]
+        //[HttpPut]
+
+
+        //[HttpDelete]
+
 
     }
 }

@@ -21,6 +21,7 @@ namespace Stressies
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                   // webBuilder.UseUrls("")
                 });
     }
 }

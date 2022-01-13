@@ -9,6 +9,8 @@ using Stressies.Services;
 
 namespace Stressies.Controllers
 {
+    [Route("[controller]")]  //api/Customer in this case
+
     public class CustomerController : ControllerBase
     {
 
@@ -20,7 +22,7 @@ namespace Stressies.Controllers
             this.customerService = customerService;
         }
 
-        [HttpGet("/customer/{id}")]
+        [HttpGet("{id}")] //dont need slash before
         public async Task<Customer> GetCustomerById(string id) 
         {
             try
@@ -35,22 +37,25 @@ namespace Stressies.Controllers
         }
 
 
-        [HttpPost("/customer")]
+        [HttpPost]
         public async Task<IActionResult> AddCustomer([FromBody]Customer customer) 
         {
             try
             {
-                await customerService.AddCustomer(customer);
-                return Ok(customer);
+                var newCustomer = await customerService.AddCustomer(customer);
+                return Ok(newCustomer);
+            }
+            catch (ArgumentException argumentException) {
+                return BadRequest(argumentException.Message);
             }
             catch (Exception exception)
             {
-                throw exception; //fix this later
+                return StatusCode(500, exception.Message);
+                //later add logging
             }
         }
 
-        [HttpDelete("/customer/{id}")]
-        //convert to int? or is it a string?
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCustomer([FromRoute]int id) 
         {
             try
@@ -64,7 +69,7 @@ namespace Stressies.Controllers
             }
         }
 
-        [HttpPut("/customer")]
+        [HttpPut]
         //async method that returns a task of a customer and calls into service class
 
         public async Task<IActionResult> UpdateCustomer([FromBody]Customer customer) 

@@ -10,7 +10,9 @@ namespace Stressies.Data.Customers
     public class CustomerRepository : ICustomerRepository
     {
         private string connectionString = "Data Source = (LocalDb)\\MSSQLLocalDB; Initial Catalog = Stressies; Integrated Security = True;";
-        private string insertStatement = "INSERT INTO Customers (FirstName, LastName, Email, Password, StreetAddress, StreetAddress2, City, State, Zip) VALUES (@FirstName, @LastName, @Email, @Password, @StreetAddress, @StreetAddress2, @City, @State, @Zip)";
+        private string insertStatement = @"INSERT INTO Customers (FirstName, LastName, Email, StreetAddress, StreetAddress2, City, State, Zip) 
+                    OUTPUT Inserted.CustomerID, Inserted.FirstName
+                 VALUES (@FirstName, @LastName, @Email, @StreetAddress, @StreetAddress2, @City, @State, @Zip)";
         private string deleteStatement = "DELETE FROM Customers WHERE [CustomerID] = @CustomerID";
         private string getByIdStatement = "SELECT * FROM Customers WHERE CustomerID = @CustomerID";
         private string updateStatement = @"
@@ -24,13 +26,14 @@ namespace Stressies.Data.Customers
                                      State = @State, 
                                      Zip = @Zip 
                                WHERE CustomerID = @CustomerID";
-
+        //add OUTPUT to hard coded statements and then change the Execute Async to Query
         public async Task<Customer> AddCustomer(Customer customer)
         {
             using (var connection = new SqlConnection(connectionString))
                 //call the stored proc
-                await connection.ExecuteAsync(insertStatement, customer);
-            return customer;
+                return await connection.QuerySingleAsync<Customer>(insertStatement, customer);
+        //        await connection.ExecuteAsync(insertStatement, customer);
+          //  return customer;
         }
 
         public async Task DeleteCustomer(int customerId) 
@@ -45,8 +48,9 @@ namespace Stressies.Data.Customers
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
-                var results = await sqlConnection.QueryAsync<Customer>(getByIdStatement, new { CustomerId = customerId });
-                return results.FirstOrDefault();
+                var results = await sqlConnection.QuerySingleOrDefaultAsync<Customer>(getByIdStatement, new { CustomerId = customerId });
+                                                                                        //sql argument could be the name of the stored procedure
+                return results;
             }
         }
 
@@ -56,7 +60,6 @@ namespace Stressies.Data.Customers
             {
                 await sqlconnection.ExecuteAsync(updateStatement, customer);
                 return customer;
-                //dont want to return what was sent in nomas... how do i return what was updated
 
             }
         }
