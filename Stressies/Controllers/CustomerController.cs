@@ -9,25 +9,23 @@ using Stressies.Services;
 
 namespace Stressies.Controllers
 {
-    [Route("[controller]")]  //api/Customer in this case
+    [Route("api/[controller]")]  //api/Customer in this case
 
     public class CustomerController : ControllerBase
     {
-
-    //does the file as a whole take a route attribute? []
-        private ICustomerService customerService;
+        private ICustomerService _customerService;
 
         public CustomerController(ICustomerService customerService)
         {
-            this.customerService = customerService;
+           _customerService = customerService;
         }
 
-        [HttpGet("{id}")] //dont need slash before
+        [HttpGet("{id}")]
         public async Task<Customer> GetCustomerById(string id) 
         {
             try
             {
-                var result = await customerService.GetCustomerById(id);
+                var result = await _customerService.GetCustomerById(id);
                 return result;
             }
             catch (Exception exception)
@@ -42,7 +40,7 @@ namespace Stressies.Controllers
         {
             try
             {
-                var newCustomer = await customerService.AddCustomer(customer);
+                var newCustomer = await _customerService.AddCustomer(customer);
                 return Ok(newCustomer);
             }
             catch (ArgumentException argumentException) {
@@ -51,7 +49,6 @@ namespace Stressies.Controllers
             catch (Exception exception)
             {
                 return StatusCode(500, exception.Message);
-                //later add logging
             }
         }
 
@@ -60,7 +57,7 @@ namespace Stressies.Controllers
         {
             try
             {
-                await customerService.DeleteCustomer(id);
+                await _customerService.DeleteCustomer(id);
                 return Ok();
             }
             catch (Exception exception)
@@ -70,13 +67,11 @@ namespace Stressies.Controllers
         }
 
         [HttpPut]
-        //async method that returns a task of a customer and calls into service class
-
         public async Task<IActionResult> UpdateCustomer([FromBody]Customer customer) 
         {
             try
             {
-                var result = await customerService.UpdateCustomer(customer);
+                var result = await _customerService.UpdateCustomer(customer);
                 return Ok();
             }
             catch (Exception exception)
@@ -85,6 +80,5 @@ namespace Stressies.Controllers
             }
         }
          
-
     }
 }

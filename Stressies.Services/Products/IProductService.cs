@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Stressies.Data
+namespace Stressies.Services
 {
-    public interface IProductRepository
+    public interface IProductService
     {
         Task<Product> AddProduct(Product product);
         Task<IEnumerable<Product>> GetProducts();

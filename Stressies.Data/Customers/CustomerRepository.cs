@@ -9,14 +9,18 @@ namespace Stressies.Data.Customers
 {
     public class CustomerRepository : ICustomerRepository
     {
-        private string connectionString = "Data Source = (LocalDb)\\MSSQLLocalDB; Initial Catalog = Stressies; Integrated Security = True;";
-        private string insertStatement = @"INSERT INTO Customers (FirstName, LastName, Email, StreetAddress, StreetAddress2, City, State, Zip) 
-                    OUTPUT Inserted.CustomerID, Inserted.FirstName
-                 VALUES (@FirstName, @LastName, @Email, @StreetAddress, @StreetAddress2, @City, @State, @Zip)";
-        private string deleteStatement = "DELETE FROM Customers WHERE [CustomerID] = @CustomerID";
-        private string getByIdStatement = "SELECT * FROM Customers WHERE CustomerID = @CustomerID";
-        private string updateStatement = @"
-                UPDATE Customers SET FirstName = @FirstName, 
+        private const string connectionString = "Data Source = (LocalDb)\\MSSQLLocalDB; Initial Catalog = Stressies; Integrated Security = True;";
+        private const string insertStatement =
+                  @"INSERT INTO Customers (FirstName, LastName, Email, StreetAddress, StreetAddress2, City, State, Zip) 
+                    OUTPUT INSERTED.CustomerID, INSERTED.FirstName, INSERTED.LastName, INSERTED.Email, INSERTED.StreetAddress, INSERTED.StreetAddress2, INSERTED.City, INSERTED.State, INSERTED.Zip
+                    VALUES (@FirstName, @LastName, @Email, @StreetAddress, @StreetAddress2, @City, @State, @Zip)";
+        private string deleteStatement = 
+                  @"DELETE FROM Customers WHERE [CustomerID] = @CustomerID";
+        private string getByIdStatement = 
+                  @"SELECT * FROM Customers WHERE CustomerID = @CustomerID";
+        private string updateStatement =
+                  @"UPDATE Customers 
+                                     SET FirstName = @FirstName, 
                                      LastName = @LastName, 
                                      Email = @Email, 
                                      Password = @Password,
@@ -25,15 +29,23 @@ namespace Stressies.Data.Customers
                                      City = @City, 
                                      State = @State, 
                                      Zip = @Zip 
-                               WHERE CustomerID = @CustomerID";
-        //add OUTPUT to hard coded statements and then change the Execute Async to Query
+                    OUTPUT INSERTED.[FirstName],
+                           INSERTED.[LastName], 
+                           INSERTED.[Email], 
+                           INSERTED.[Password], 
+                           INSERTED.[StreetAddress], 
+                           INSERTED.[StreetAddress2], 
+                           INSERTED.[City], 
+                           INSERTED.[State], 
+                           INSERTED.[Zip]
+                    WHERE CustomerID = @CustomerID";
         public async Task<Customer> AddCustomer(Customer customer)
         {
             using (var connection = new SqlConnection(connectionString))
-                //call the stored proc
-                return await connection.QuerySingleAsync<Customer>(insertStatement, customer);
-        //        await connection.ExecuteAsync(insertStatement, customer);
-          //  return customer;
+            {
+                var addedCustomer = await connection.QuerySingleAsync<Customer>(insertStatement, customer);
+                return addedCustomer;
+            }
         }
 
         public async Task DeleteCustomer(int customerId) 
@@ -49,7 +61,7 @@ namespace Stressies.Data.Customers
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
                 var results = await sqlConnection.QuerySingleOrDefaultAsync<Customer>(getByIdStatement, new { CustomerId = customerId });
-                                                                                        //sql argument could be the name of the stored procedure
+                                                                                    // this could also be done with stored procedures by replacing the SQL statement with the name of the stored procedure
                 return results;
             }
         }
@@ -58,8 +70,8 @@ namespace Stressies.Data.Customers
         {
             using (SqlConnection sqlconnection = new SqlConnection(connectionString))
             {
-                await sqlconnection.ExecuteAsync(updateStatement, customer);
-                return customer;
+                var updatedCustomer = await sqlconnection.QuerySingleAsync<Customer>(updateStatement, customer);
+                return updatedCustomer;
 
             }
         }
