@@ -56,7 +56,7 @@ namespace Stressies.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateProduct([FromBody]Product product) //the from body makes it explicit, but isn't necessary
+        public async Task<IActionResult> UpdateProduct(Product product) //the from body makes it explicit, but isn't necessary
         {
             var updatedProduct = await _productService.UpdateProduct(product);
             return Ok(updatedProduct);

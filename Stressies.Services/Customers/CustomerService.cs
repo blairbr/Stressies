@@ -16,7 +16,8 @@ namespace Stressies.Services
 
         public async Task<Customer> GetCustomerById(string id)
         {
-           return await _customerRepository.GetCustomerById(id);
+           var customer = await _customerRepository.GetCustomerById(id);
+           return customer;
         }
 
         public async Task DeleteCustomer(int id) 
@@ -29,10 +30,8 @@ namespace Stressies.Services
             if (string.IsNullOrWhiteSpace(customer.FirstName)) {
                 throw new ArgumentException("First name cannot be empty.");
             }
-            return await _customerRepository.AddCustomer(customer);
-            //need to change this later to map to a data entity
-
-           // return customer;
+            var addedCustomer = await _customerRepository.AddCustomer(customer);
+            return addedCustomer;
         }
 
         public async Task<Customer> UpdateCustomer(Customer customer) 

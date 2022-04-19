@@ -1,0 +1,262 @@
+{
+  "info": {
+    "_postman_id": "a3f77a88-bc48-4ef3-b36d-129a58129a17",
+    "name": "Stressies",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Customer Requests",
+      "item": [
+        {
+          "name": "AddCustomer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"firstName\": \"Peter\",\r\n\"lastName\": \"Parker\",\r\n\"Email\":\"peter.parker@gmail.com\",\r\n\"streetAddress\":\"41 Main St.\",\r\n\"streetAddress2\":\"Apartment 2\",\r\n\"city\": \"Glen Ridge\",\r\n\"state\": \"NJ\",\r\n\"zip\": \"07028\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:5001/api/customer",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "5001",
+              "path": [
+                "api",
+                "customer"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetCustomerById",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://localhost:5001/api/customer/1",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "5001",
+              "path": [
+                "api",
+                "customer",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteCustomer",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://localhost:5001/api/customer/2",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "5001",
+              "path": [
+                "api",
+                "customer",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateCustomer",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 4,\r\n    \"firstName\" : \"teddy\",\r\n    \"lastName\" : \"test\",\r\n    \"email\": \"teddy@gmail.com\",\r\n    \"streetAddress\": \"145 Maple St.\",\r\n    \"streetAddress2\": \"Apartment 6B\",\r\n    \"city\": \"San Diego\",\r\n    \"state\": \"CA\",\r\n    \"zip\": \"90234\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:5001/customer",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "5001",
+              "path": [
+                "customer"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Product Requests",
+      "item": [
+        {
+          "name": "AddProduct",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"Name\": \"Henrietta Pencil\",\r\n\"description\": \"Our bestselling Stressie\",\r\n\"quantityInStock\": 150,\r\n\"price\": 4.25\r\n}"
+            },
+            "url": {
+              "raw": "https://localhost:5001/api/Product",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "5001",
+              "path": [
+                "api",
+                "Product"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetAllProducts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:5001/api/Product",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "5001",
+              "path": [
+                "api",
+                "Product"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetProductById",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:5001/api/Product/1002",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "5001",
+              "path": [
+                "api",
+                "Product",
+                "1002"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteProductById",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "https://localhost:5001/api/Product/3",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "5001",
+              "path": [
+                "api",
+                "Product",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateProduct",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"Id\" : 3,\r\n\"Name\": \"Danny Boy Pencil\",\r\n\"description\": \"Our tiniest Stressie. Only costs a buck.\",\r\n\"quantityInStock\": 103,\r\n\"price\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:5001/api/Product",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "5001",
+              "path": [
+                "api",
+                "Product"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Stressies.Domain
+﻿namespace Stressies.Domain
 {
     public class Customer : BaseResource
     {

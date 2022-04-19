@@ -34,7 +34,6 @@ namespace Stressies.Controllers
             }
         }
 
-
         [HttpPost]
         public async Task<IActionResult> AddCustomer([FromBody]Customer customer) 
         {

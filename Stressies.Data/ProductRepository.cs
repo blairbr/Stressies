@@ -40,27 +40,23 @@ namespace Stressies.Data
                     INSERTED.[Price]
               WHERE Id = @Id";
 
-        //  https://www.sqlservercentral.com/articles/the-output-clause-for-insert-and-delete-statements
         public async Task<Product> AddProduct(Product product)
         {
             //if you throw an exception here, it 'bubbles up' and is caught in the controller, and then you can control what is sent back to the client, for instance a 500 code ISE with some message
-         //   throw new Exception("Exception in add product method");
+            //   throw new Exception("Exception in add product method");
 
             using (var connection = new SqlConnection(connectionString))
             {
                 var returnedProduct = await connection.QuerySingleAsync<Product>(insertStatement, product);
                 return returnedProduct;
-                //why query single instead of query?
             }
         }
-        //to return the object just inserted,
-        //add OUTPUT to hard coded statements and then change the Execute Async to Query
 
         public async Task<IEnumerable<Product>> GetProducts() 
         {
             using (var connection = new SqlConnection(connectionString)) 
             {
-                var products = await connection.QueryAsync<Product>(selectAllProductsStatement); //by default returns an ienumerable
+                var products = await connection.QueryAsync<Product>(selectAllProductsStatement);
                 return products;
             }
         }
@@ -84,8 +80,6 @@ namespace Stressies.Data
 
         public async Task<Product> UpdateProduct(Product product) 
         { 
-        //call into db
-
             using (var connection = new SqlConnection(connectionString))
             {
                 var updatedProduct = await connection.QuerySingleAsync<Product>(updateProductStatement, product);
