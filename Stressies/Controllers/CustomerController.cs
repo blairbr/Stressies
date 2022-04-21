@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Stressies.Domain;
 using Stressies.Services;
+using System;
+using System.Threading.Tasks;
 
 namespace Stressies.Controllers
 {
-    [Route("api/[controller]")]  //api/Customer in this case
+    [Route("api/[controller]")]
 
     public class CustomerController : ControllerBase
     {
@@ -21,7 +18,7 @@ namespace Stressies.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<Customer> GetCustomerById(string id) 
+        public async Task<Customer> GetCustomerById([FromRoute]string id) 
         {
             try
             {

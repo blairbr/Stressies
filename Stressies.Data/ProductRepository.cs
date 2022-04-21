@@ -1,16 +1,14 @@
 ﻿using Dapper;
 using Stressies.Domain;
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Stressies.Data
 {
     public class ProductRepository : IProductRepository
     {
-        private string connectionString = "Data Source = (LocalDb)\\MSSQLLocalDB; Initial Catalog = Stressies; Integrated Security = True;";
+        private const string connectionString = "Data Source = (LocalDb)\\MSSQLLocalDB; Initial Catalog = Stressies; Integrated Security = True;";
 
         private const string insertStatement =
             @"Insert into Products (Name, Description, QuantityInStock, Price)
@@ -42,9 +40,6 @@ namespace Stressies.Data
 
         public async Task<Product> AddProduct(Product product)
         {
-            //if you throw an exception here, it 'bubbles up' and is caught in the controller, and then you can control what is sent back to the client, for instance a 500 code ISE with some message
-            //   throw new Exception("Exception in add product method");
-
             using (var connection = new SqlConnection(connectionString))
             {
                 var returnedProduct = await connection.QuerySingleAsync<Product>(insertStatement, product);
@@ -88,3 +83,8 @@ namespace Stressies.Data
         }
     }
 }
+
+// The 'using' keyword the compiler will create a finally block under the hood, which will call the dispose method 
+// If you throw an exception in one of these methods, it 'bubbles up' and will be caught in a catch block in the controller. 
+//  Then you can control what is sent back to the client, for instance a 500 code ISE with some message
+//  throw new Exception("Exception in add product method");

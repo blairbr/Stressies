@@ -103,3 +103,4 @@ C:\Users\Blair\source\repos\Stressies\Stressies\obj\Debug\netcoreapp3.1\staticwe
 C:\Users\Blair\source\repos\Stressies\Stressies\obj\Debug\netcoreapp3.1\staticwebassets\Stressies.StaticWebAssets.xml
 C:\Users\Blair\source\repos\Stressies\Stressies\obj\Debug\netcoreapp3.1\Stressies.dll
 C:\Users\Blair\source\repos\Stressies\Stressies\obj\Debug\netcoreapp3.1\Stressies.pdb
+C:\Users\Blair\source\repos\Stressies\Stressies\bin\Debug\netcoreapp3.1\Notes\SampleSQLandPostman\PostmanCollectionForStressies.json

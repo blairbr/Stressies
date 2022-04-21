@@ -8,7 +8,6 @@ namespace Stressies.Services
     public class ProductService : IProductService
     {
         private IProductRepository productRepository;
-
         public ProductService(IProductRepository productRepository)
         {
             this.productRepository = productRepository;
@@ -44,3 +43,7 @@ namespace Stressies.Services
         }
     }
 }
+
+
+//  In this case, this service class mainly calls the repository, but it can also do logic or manipulate data. 
+// The idea of separating them out is so that the repository layer doesn't do anything more than access the database. 

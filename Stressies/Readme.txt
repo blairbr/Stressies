@@ -17,13 +17,23 @@ data entity?
 
 Be able to explain
 1)Async/await
-2)Dependency Injection
+2)Dependency Injection - if you use an interface you can remove the dependency ***
 3)Interfaces
-4)Service Classes
+4)Service Classes - contain logic/data manipulation, call repo class, meant to separate concerns
 5)Error Handling
 6)Validation
 7)IActionResult
 8)Routes/Routing with IDs etc, header vs Body
+9)Example of Encapsulation
+    AKA data hiding; data is hidden from other classes, so it is also known as data-hiding.
+    Declaring all the variables in the class as private and using C# Properties in the class to set and get the values of variables.
+10)Example of base class/polymorphism
+11) EntityFRAMEWORk ORM - dapper, what is being used in this project??
+
+Repository/Service pattern
+
+This is using Dapper which is a Micro ORM "a simple object mapper framework which helps map the query output to a domain class/C# class"
+
 
 
 //Questions

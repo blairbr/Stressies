@@ -18,10 +18,8 @@ namespace Stressies.Controllers
             _productService = productService;
         }
 
-        //Return types on Controllers should be IActionResult?
-        //endpoint 
         [HttpPost]
-        public async Task<IActionResult> AddProduct(Product product)
+        public async Task<IActionResult> AddProduct([FromBody]Product product)
         {
             if (product == null)
             {
@@ -35,10 +33,9 @@ namespace Stressies.Controllers
             }
             catch (Exception ex)
             {
-                //return BadRequest(ex.Message);
                 return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
             }
-            //in the UI, an if statement to catch 500 and display some nice error message
+            //In the UI you could have an if statement to catch the 500 and display some nice error message
         }
 
         [HttpGet]
@@ -49,21 +46,21 @@ namespace Stressies.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetProductById(int id)
+        public async Task<IActionResult> GetProductById([FromRoute]int id)
         {
             var product = await _productService.GetProductById(id);
             return Ok(product);
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateProduct(Product product) //the from body makes it explicit, but isn't necessary
+        public async Task<IActionResult> UpdateProduct([FromBody]Product product)
         {
             var updatedProduct = await _productService.UpdateProduct(product);
             return Ok(updatedProduct);
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduct(int id) 
+        public async Task<IActionResult> DeleteProduct([FromRoute]int id) 
         {
             await _productService.DeleteProduct(id);
             return Ok();
